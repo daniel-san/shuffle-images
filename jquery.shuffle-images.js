@@ -21,6 +21,8 @@
     mouseMoveTrigger: 50,
     hoverTrigger: 200,
     scrollTrigger: 100,
+    duration: 5000,
+    interval: 500,
     target: "> img"
   };  
   
@@ -57,8 +59,8 @@
 
               var active = el.find("img.active");
 
-              if (active.next().length > 0) {
-                active.next().addClass("active").show();
+              if (active.next("img").length > 0) {
+                active.next("img").addClass("active").show();
                 active.removeClass("active").hide();
 
               } else {
@@ -77,8 +79,8 @@
             triggerTime = setInterval(function(){
               var active = el.find("img.active");
 
-              if (active.next().length > 0) {
-                active.next().addClass("active").show();
+              if (active.next("img").length > 0) {
+                active.next("img").addClass("active").show();
                 active.removeClass("active").hide();
 
               } else {
@@ -100,8 +102,8 @@
 
               var active = el.find("img.active");
 
-              if (active.next().length > 0) {
-                active.next().addClass("active").show();
+              if (active.next("img").length > 0) {
+                active.next("img").addClass("active").show();
                 active.removeClass("active").hide();
 
               } else {
@@ -123,8 +125,8 @@
       
               var active = el.find("img.active");
       
-              if (active.next().length > 0) {
-                active.next().addClass("active").show();
+              if (active.next("img").length > 0) {
+                active.next("img").addClass("active").show();
                 active.removeClass("active").hide();
       
               } else {
@@ -136,6 +138,29 @@
               prevLoc = parseInt($(document).scrollTop());
             }
           });
+          break;
+      case "loop":
+          duration = settings.duration;
+          interval = settings.interval;
+
+          loopFunc = function () {
+              var active = el.find("img.active");
+              if (active.next("img").length > 0) {
+                active.next("img").addClass("active").show();
+                active.removeClass("active").hide();
+              } else {
+                el.find("img:first-child").addClass("active").show();
+                active.removeClass("active").hide();
+              }
+          }
+          
+          loopInterval = setInterval(loopFunc, interval);
+
+          endTimeout = setTimeout(function(){
+              clearInterval(loopInterval);
+              var active = el.find("img.active");
+              active.removeClass("active").hide();
+          }, duration);
           break;
       default:
       }

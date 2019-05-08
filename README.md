@@ -42,6 +42,8 @@ Once that is set up, simply call the plugin like this:
    mouseMoveTrigger: 50,          // For "imageMouseMove" only, you can set how many pixels you have to move in order to trigger one image shuffle. The lower the faster. The default value is 50.
    hoverTrigger: 200,             // For "imageHover" only, you can set how long you have to hover the image until it shuffles to other images. The option accepts milliseconds without unit. The default value is 200.
    scrollTrigger: 100,          // For "documentScroll" only, you can set how many pixels you have to scroll to see the image shuffle. The default value is 100.
+   duration: 3000,              // For "loop" only, sets the duration of the shuffling loop in miliseconds
+   interval: 100,               // For "loop" only, sets the interval between each image shuffle in miliseconds
    target: "> img"              // In case you have a complete HTML structure, you can set your own custom selector to your images here. The default value is "> img" which means images that are directly under the "shuffle-me" will be used to shuffle.
  });
 ````
